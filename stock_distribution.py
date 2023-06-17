@@ -50,13 +50,16 @@ class Data():
             if price is not None:
                 prices[code] = price
             time.sleep(2)
+        ideal_investment_choice = input('Do you want to calculate the ideal investment? (yes/no)')
+        if ideal_investment_choice.lower() == 'yes':
+            quantity = int(input('How many stocks would you like to buy from each company?'))
+            ideal_investment = self.ideal_investment_by_quantity(prices, quantity)
+            print(f'The ideal investment to buy {quantity} stocks from each company is R${ideal_investment}')
 
-        quantity = int(input('How many stocks would you like to buy from each company?'))
-        ideal_investment = self.ideal_investment_by_quantity(prices, quantity)
-        print(f'The ideal investment to buy {quantity} stocks from each company is R${ideal_investment}')
-
-        investment = float(input('How much do you want to invest?').replace(',', '.'))
-        distribution, remaining = self.distribute_investment(prices, investment)
+        investment_choice = input('Would you like to inform the amount you want to invest? (yes/no)')
+        if investment_choice.lower == 'yes':
+            investment = float(input('How much do you want to invest?').replace(',', '.'))
+            distribution, remaining = self.distribute_investment(prices, investment)
 
         for stock, quantity in distribution.items():
             print(f'You can buy {quantity} stocks of {stock} with R${investment}')
