@@ -57,7 +57,7 @@ class Data():
             print(f'The ideal investment to buy {quantity} stocks from each company is R${ideal_investment}')
 
         investment_choice = input('Would you like to inform the amount you want to invest? (yes/no)')
-        if investment_choice.lower == 'yes':
+        if investment_choice.lower() == 'yes':
             investment = float(input('How much do you want to invest?').replace(',', '.'))
             distribution, remaining = self.distribute_investment(prices, investment)
 
